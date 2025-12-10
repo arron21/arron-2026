@@ -1,0 +1,237 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout>
+	<section class="about-hero">
+		<div class="about-content">
+			<div class="about-text">
+				<h1>ABOUT</h1>
+				<div class="about-description">
+					<p>
+						Sofia Parazi is a Los Angeles-based photographer specializing in architectural 
+						forms, urban landscapes, and minimalist compositions. Her work explores the 
+						relationship between light, shadow, and structure in contemporary environments.
+					</p>
+					<p>
+						With a background in fine arts and a keen eye for geometric precision, Sofia's 
+						photography captures the subtle beauty found in everyday spaces. Her collections 
+						range from intimate still life studies to expansive architectural documentation.
+					</p>
+					<p>
+						Her work has been featured in various publications and exhibitions across 
+						California, focusing on the intersection of human experience and built environments.
+					</p>
+				</div>
+			</div>
+			<div class="about-image">
+				<img 
+					src="https://images.unsplash.com/photo-1494790108755-2616c0763a84?w=600&h=800&fit=crop" 
+					alt="Sofia Parazi - Photographer"
+				/>
+			</div>
+		</div>
+	</section>
+
+	<section class="about-philosophy">
+		<div class="philosophy-content">
+			<h2>PHILOSOPHY</h2>
+			<p class="philosophy-text">
+				"Photography is about finding the extraordinary in the ordinary. Every shadow tells 
+				a story, every line leads somewhere meaningful. I believe in the power of simplicity 
+				and the importance of negative space in creating compelling visual narratives."
+			</p>
+		</div>
+	</section>
+
+	<section class="about-services">
+		<div class="services-content">
+			<h2>SERVICES</h2>
+			<div class="services-grid">
+				<div class="service-item">
+					<h3>ARCHITECTURAL PHOTOGRAPHY</h3>
+					<p>Comprehensive documentation of buildings, interiors, and urban environments.</p>
+				</div>
+				<div class="service-item">
+					<h3>EDITORIAL WORK</h3>
+					<p>Magazine features, lifestyle photography, and commercial assignments.</p>
+				</div>
+				<div class="service-item">
+					<h3>FINE ART PRINTS</h3>
+					<p>Limited edition prints available for collectors and interior design projects.</p>
+				</div>
+				<div class="service-item">
+					<h3>WORKSHOPS</h3>
+					<p>Photography workshops focusing on composition, light, and architectural subjects.</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<Footer />
+</Layout>
+
+<style>
+	.about-hero {
+		min-height: 100vh;
+		background: #e8e8e8;
+		display: flex;
+		align-items: center;
+		padding: 6rem 3rem;
+	}
+
+	.about-content {
+		max-width: 1400px;
+		margin: 0 auto;
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 6rem;
+		align-items: center;
+	}
+
+	.about-text h1 {
+		font-size: clamp(4rem, 8vw, 8rem);
+		font-weight: 900;
+		margin: 0 0 2rem 0;
+		letter-spacing: -0.03em;
+		line-height: 0.9;
+		color: #2a2a2a;
+		text-transform: uppercase;
+	}
+
+	.about-description p {
+		font-size: 1.125rem;
+		line-height: 1.7;
+		color: #2a2a2a;
+		margin-bottom: 1.5rem;
+	}
+
+	.about-description p:last-child {
+		margin-bottom: 0;
+	}
+
+	.about-image {
+		display: flex;
+		justify-content: center;
+	}
+
+	.about-image img {
+		width: 100%;
+		max-width: 400px;
+		height: auto;
+		object-fit: cover;
+	}
+
+	.about-philosophy {
+		background: white;
+		padding: 6rem 3rem;
+	}
+
+	.philosophy-content {
+		max-width: 1000px;
+		margin: 0 auto;
+		text-align: center;
+	}
+
+	.philosophy-content h2 {
+		font-size: clamp(2rem, 4vw, 3rem);
+		font-weight: 900;
+		margin: 0 0 3rem 0;
+		letter-spacing: -0.02em;
+		color: #2a2a2a;
+		text-transform: uppercase;
+	}
+
+	.philosophy-text {
+		font-size: 1.25rem;
+		line-height: 1.6;
+		color: #2a2a2a;
+		font-style: italic;
+		font-family: 'Courier Prime', 'Courier New', monospace;
+	}
+
+	.about-services {
+		background: #f8f8f8;
+		padding: 6rem 3rem;
+	}
+
+	.services-content {
+		max-width: 1400px;
+		margin: 0 auto;
+	}
+
+	.services-content h2 {
+		font-size: clamp(2rem, 4vw, 3rem);
+		font-weight: 900;
+		margin: 0 0 4rem 0;
+		letter-spacing: -0.02em;
+		color: #2a2a2a;
+		text-transform: uppercase;
+		text-align: center;
+	}
+
+	.services-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+		gap: 3rem;
+	}
+
+	.service-item {
+		background: white;
+		padding: 2.5rem;
+		border: 1px solid rgba(0, 0, 0, 0.08);
+	}
+
+	.service-item h3 {
+		font-size: 1.125rem;
+		font-weight: 700;
+		letter-spacing: 0.08em;
+		margin: 0 0 1rem 0;
+		color: #2a2a2a;
+		text-transform: uppercase;
+	}
+
+	.service-item p {
+		font-size: 1rem;
+		line-height: 1.6;
+		color: #666;
+		margin: 0;
+	}
+
+	@media (max-width: 1024px) {
+		.about-content {
+			grid-template-columns: 1fr;
+			gap: 3rem;
+		}
+
+		.about-hero {
+			padding: 4rem 2rem;
+		}
+
+		.about-philosophy,
+		.about-services {
+			padding: 4rem 2rem;
+		}
+	}
+
+	@media (max-width: 768px) {
+		.about-hero {
+			padding: 3rem 1.5rem;
+		}
+
+		.about-philosophy,
+		.about-services {
+			padding: 3rem 1.5rem;
+		}
+
+		.services-grid {
+			grid-template-columns: 1fr;
+			gap: 2rem;
+		}
+
+		.service-item {
+			padding: 2rem;
+		}
+	}
+</style>

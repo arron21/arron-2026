@@ -1,0 +1,128 @@
+---
+// Hero component
+---
+
+<section id="hero">
+	<div class="hero-title-section">
+		<h1 class="hero-title">RESEDA</h1>
+	</div>
+	<div class="hero-content">
+		<div class="hero-left">
+			<div class="hero-image">
+				<img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=800&h=1000&fit=crop" alt="Photography" />
+			</div>
+		</div>
+		<div class="hero-right">
+			<div class="hero-text">
+				<h2>LA-BASED PHOTOGRAPHY BY SOFIA PARAZI</h2>
+			</div>
+		</div>
+	</div>
+</section>
+
+<style>
+	#hero {
+		min-height: 100vh;
+		display: flex;
+		flex-direction: column;
+		background: #e8e8e8;
+	}
+
+	.hero-title-section {
+		width: 100%;
+		padding: 4rem 3rem 2rem;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.hero-title {
+		font-size: clamp(5rem, 25vw, 20rem);
+		font-weight: 900;
+		margin: 0;
+		letter-spacing: -0.03em;
+		line-height: 0.85;
+		color: #2a2a2a;
+		text-transform: uppercase;
+		text-align: center;
+	}
+
+	.hero-content {
+		flex: 1;
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 3rem;
+		padding: 2rem 3rem 4rem;
+	}
+
+	.hero-left {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.hero-image {
+		width: 100%;
+		max-width: 500px;
+	}
+
+	.hero-image img {
+		width: 100%;
+		height: auto;
+		object-fit: cover;
+		display: block;
+	}
+
+	.hero-right {
+		display: flex;
+		align-items: flex-end;
+		justify-content: flex-start;
+	}
+
+	.hero-text h2 {
+		font-size: clamp(1.5rem, 3vw, 3rem);
+		font-weight: 900;
+		margin: 0;
+		letter-spacing: -0.02em;
+		line-height: 1;
+		color: #2a2a2a;
+		text-transform: uppercase;
+	}
+
+	@media (max-width: 1024px) {
+		.hero-content {
+			grid-template-columns: 1fr;
+			gap: 2rem;
+		}
+
+		.hero-title-section {
+			padding: 3rem 2rem 1.5rem;
+		}
+
+		.hero-content {
+			padding: 1.5rem 2rem 3rem;
+		}
+
+		.hero-title {
+			font-size: clamp(4rem, 20vw, 8rem);
+		}
+
+		.hero-text h2 {
+			font-size: clamp(1.25rem, 5vw, 2rem);
+		}
+
+		.hero-right {
+			align-items: flex-start;
+		}
+	}
+
+	@media (max-width: 768px) {
+		.hero-title-section {
+			padding: 2rem 1.5rem 1rem;
+		}
+
+		.hero-content {
+			padding: 1rem 1.5rem 2rem;
+		}
+	}
+</style>
