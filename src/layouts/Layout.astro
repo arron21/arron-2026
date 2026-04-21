@@ -1,5 +1,6 @@
 ---
 import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
 ---
 
 <!doctype html>
@@ -12,16 +13,14 @@ import Nav from '../components/Nav.astro';
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Recursive:wght@300..1000&display=swap" rel="stylesheet">
-		<link href="https://fonts.googleapis.com/css2?family=Cutive+Mono&display=swap" rel="stylesheet">		<title>RESEDA - Photography by Arron Hunt</title>
+		<link href="https://fonts.googleapis.com/css2?family=Cutive+Mono&display=swap" rel="stylesheet">		<title>Arron McCrory</title>
 	</head>
 	<body>
 		<Nav />
 		<main>
 			<slot />
 		</main>
-	</body>
-</html>
-
+                <Footer />
 <style is:global>
 	* {
 		box-sizing: border-box;

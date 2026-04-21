@@ -1,0 +1,33 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout>
+	<iframe 
+		src="https://arronmccror-photography-89.deno.dev/" 
+		title="Photography by Arron McCrory"
+		allowfullscreen>
+	</iframe>
+</Layout>
+
+<style>
+	iframe {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100vw;
+		height: 100vh;
+		border: none;
+		z-index: 9999; /* Ensures it sits on top if true fullscreen is desired */
+	}
+	
+	/* Or, if you prefer it to sit under your navigation bar naturally: */
+	/* 
+	iframe {
+		width: 100%;
+		height: calc(100vh - 80px); 
+		border: none;
+		display: block;
+	}
+	*/
+</style>
