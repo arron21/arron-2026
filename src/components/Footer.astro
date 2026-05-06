@@ -3,41 +3,52 @@
 ---
 
 <footer class="tui-statusbar black-168 white-255-text">
-	<ul>
-		<li><a href="/about" class="white-255-text">About</a></li>
-		<li><a href="/web-development" class="white-255-text">Web Dev</a></li>
-		<li><a href="/photography" class="white-255-text">Photography</a></li>
-		<li><a href="/contact" class="white-255-text">Contact</a></li>
-		<li><a href="https://github.com/arron21" class="white-255-text">GitHub</a></li>
-		<li><a href="https://www.linkedin.com/in/arronmccrory/" class="white-255-text">LinkedIn</a></li>
-	</ul>
-	<span>&copy; {new Date().getFullYear()} Arron McCrory</span>
+        <ul>
+                <li><a href="/about" class="white-255-text">About</a></li>
+                <li><a href="/web-development" class="white-255-text">Web Dev</a></li>
+                <li><a href="/photography" class="white-255-text">Photography</a></li>
+                <li><a href="/contact" class="white-255-text">Contact</a></li>
+                <li><a href="https://github.com/arron21" class="white-255-text">GitHub</a></li>
+                <li><a href="https://www.linkedin.com/in/arronmccrory/" class="white-255-text">LinkedIn</a></li>
+        </ul>
+        <span>&copy; {new Date().getFullYear()} Arron McCrory</span>
 </footer>
 
 <style>
-	footer {
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		padding: 2px 8px;
-		width: 100%;
-		flex-wrap: wrap;
-		gap: 0.25rem;
-	}
+        footer {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                padding: 10px 8px;
+                width: 100%;
+                gap: 0.5rem;
+        }
 
-	footer ul {
-		list-style: none;
-		margin: 0;
-		padding: 0;
-		display: flex;
-		gap: 1rem;
-	}
+        footer ul {
+                list-style: none;
+                margin: 0;
+                padding: 0;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 1rem;
+        }
 
-	footer a:hover {
-		text-decoration: underline;
-	}
+        @media (min-width: 768px) {
+                footer {
+                        flex-direction: row;
+                        justify-content: space-between;
+                        padding: 2px 8px;
+                        gap: 0.25rem;
+                }
+        }
 
-	footer span {
-		font-size: 0.85rem;
-	}
+        footer a:hover {
+                text-decoration: underline;
+        }
+
+        footer span {
+                font-size: 0.85rem;
+        }
 </style>
