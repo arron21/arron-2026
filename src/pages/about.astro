@@ -3,66 +3,50 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout>
-<main>
-<nav>
-<a href="/">&larr; Back to Home</a>
-</nav>
-<article>
-<h1>About Me</h1>
-<p>
-Hi, I'm Arron McCrory. I have been working in IT since I was in the womb, and have specialized in frontend web development. Over the years, I have honed my skills and developed a deep passion for creating intuitive and engaging user interfaces.
-</p>
-<p>
-In addition to my professional work, I have a variety of interests that keep me busy and inspired. I enjoy photography, capturing moments and scenes that tell a story. Boxing is another passion of mine, providing both a physical challenge and a mental release. When I have some downtime, I love to unwind with video games.
-</p>
-<p>
-I am always eager to learn new things and take on new challenges, both in my professional career and personal life. Thank you for taking the time to learn a bit about me.
-</p>
+	<div class="tui-window blue-168 tui-page-window">
+		<fieldset class="tui-fieldset white-255-border">
+			<legend class="white-255-text">About Me</legend>
+			<p class="white-255-text">
+				<a href="/" class="cyan-255-text">&larr; Back to Home</a>
+			</p>
+			<p class="white-255-text">
+				Hi, I'm Arron McCrory. I have been working in IT since I was in the womb, and have specialized
+				in frontend web development. Over the years, I have honed my skills and developed a deep passion
+				for creating intuitive and engaging user interfaces.
+			</p>
+			<p class="white-255-text">
+				In addition to my professional work, I have a variety of interests that keep me busy and
+				inspired. I enjoy photography, capturing moments and scenes that tell a story. Boxing is another
+				passion of mine, providing both a physical challenge and a mental release. When I have some
+				downtime, I love to unwind with video games.
+			</p>
+			<p class="white-255-text">
+				I am always eager to learn new things and take on new challenges, both in my professional career
+				and personal life. Thank you for taking the time to learn a bit about me.
+			</p>
+		</fieldset>
+	</div>
 
-<div class="image-gallery">
-<img src="/images/arron-taking-a-photo.jpg" alt="Arron McCrory taking a photograph" />
-<img src="/images/arron-boxing.jpg" alt="Arron McCrory boxing" />
-<img src="/images/arron-cider-mill.jpg" alt="Arron McCrory enjoying some hot cider" />
-</div>
-</article>
-</main>
+	<div class="tui-window black-168 tui-page-window">
+		<fieldset class="tui-fieldset white-168-border">
+			<legend class="white-168-text">Photos</legend>
+			<div class="image-gallery">
+				<img src="/images/arron-taking-a-photo.jpg" alt="Arron McCrory taking a photograph" />
+				<img src="/images/arron-boxing.jpg" alt="Arron McCrory boxing" />
+				<img src="/images/arron-cider-mill.jpg" alt="Arron McCrory enjoying some hot cider" />
+			</div>
+		</fieldset>
+	</div>
 </Layout>
 
 <style>
-main {
-margin: auto;
-padding: 1rem;
-max-width: 800px;
-color: #333;
-font-family: system-ui, sans-serif;
-}
-nav {
-margin-bottom: 2rem;
-}
-a {
-color: #0056b3;
-text-decoration: none;
-}
-a:hover {
-text-decoration: underline;
-}
-h1 {
-font-size: 2.5rem;
-margin-bottom: 1rem;
-}
-p {
-line-height: 1.6;
-margin-bottom: 1.5rem;
-}
-.image-gallery {
-display: flex;
-flex-direction: column;
-gap: 2rem;
-margin-top: 3rem;
-}
-.image-gallery img {
-max-width: 100%;
-border-radius: 8px;
-box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-}
+	.image-gallery {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+	}
+	.image-gallery img {
+		max-width: 100%;
+		border: 2px solid rgb(168, 168, 168);
+	}
 </style>

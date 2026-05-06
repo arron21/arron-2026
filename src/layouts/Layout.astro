@@ -1,6 +1,7 @@
 ---
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
+import 'tuicss/dist/tuicss.min.css';
 ---
 
 <!doctype html>
@@ -10,38 +11,42 @@ import Footer from '../components/Footer.astro';
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Recursive:wght@300..1000&display=swap" rel="stylesheet">
-		<link href="https://fonts.googleapis.com/css2?family=Cutive+Mono&display=swap" rel="stylesheet">		<title>Arron McCrory</title>
+		<title>Arron McCrory</title>
+		<script src="/tuicss.min.js" is:inline></script>
 	</head>
-	<body>
+	<body class="cyan-168">
 		<Nav />
 		<main>
 			<slot />
 		</main>
-                <Footer />
+		<Footer />
+	</body>
+</html>
+
 <style is:global>
 	* {
 		box-sizing: border-box;
 	}
-	
+
 	html,
 	body {
 		margin: 0;
 		padding: 0;
 		width: 100%;
 		min-height: 100vh;
-		background: #f5f5f5;
-		color: #1a1a1a;
-		font-family: "Recursive", sans-serif;
-		font-optical-sizing: auto;
-		font-weight: <weight>;
-		font-style: normal;
-		font-variation-settings:
-			"slnt" 0,
-			"CASL" 0,
-			"CRSV" 0.5,
-			"MONO" 0;
+	}
+
+	main {
+		padding: 1rem 2rem 2rem;
+	}
+
+	.tui-page-window {
+		margin: 2rem auto;
+		max-width: 760px;
+		display: block;
+	}
+
+	.tui-page-window + .tui-page-window {
+		margin-top: 0;
 	}
 </style>

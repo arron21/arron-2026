@@ -3,49 +3,30 @@ import Layout from '../../layouts/Layout.astro';
 ---
 
 <Layout>
-<main>
-<nav>
-<a href="/">&larr; Back to Home</a>
-</nav>
-<article>
-<h1>Angular</h1>
-<p>
-I remember back in 2013 when my team was tasked with architecting a new application. We were moving away from Laravel and wanted to implement a modern frontend. I had to choose between React and AngularJS (Angular 2 was not available yet). I chose AngularJS because I liked the syntax, and it was built by Google. As a Google fanboy, it was a natural choice.
-</p>
-<p>
-Angular has changed a lot since 2013, evolving from AngularJS to simply Angular. In 2023, the introduction of standalone component syntax made the requirement for modules a thing of the past. It's my favorite framework, not only because of my familiarity with it but also due to its opinionated nature.
-</p>
-<p>
-Being a strongly opinionated framework means that we, as developers, don't need to reinvent the wheel for every project. This allows for greater consistency and efficiency in our development process.
-</p>
-</article>
-</main>
+	<div class="tui-window blue-168 tui-page-window">
+		<fieldset class="tui-fieldset white-255-border">
+			<legend class="white-255-text">Angular</legend>
+			<p class="white-255-text">
+				<a href="/" class="cyan-255-text">&larr; Back to Home</a>
+			</p>
+			<h1 class="white-255-text">Angular</h1>
+			<p class="white-255-text">
+				I remember back in 2013 when my team was tasked with architecting a new application. We were
+				moving away from Laravel and wanted to implement a modern frontend. I had to choose between
+				React and AngularJS (Angular 2 was not available yet). I chose AngularJS because I liked the
+				syntax, and it was built by Google. As a Google fanboy, it was a natural choice.
+			</p>
+			<p class="white-255-text">
+				Angular has changed a lot since 2013, evolving from AngularJS to simply Angular. In 2023, the
+				introduction of standalone component syntax made the requirement for modules a thing of the
+				past. It's my favorite framework, not only because of my familiarity with it but also due to
+				its opinionated nature.
+			</p>
+			<p class="white-255-text">
+				Being a strongly opinionated framework means that we, as developers, don't need to reinvent the
+				wheel for every project. This allows for greater consistency and efficiency in our development
+				process.
+			</p>
+		</fieldset>
+	</div>
 </Layout>
-
-<style>
-main {
-margin: auto;
-padding: 1rem;
-max-width: 800px;
-color: #333;
-font-family: system-ui, sans-serif;
-}
-nav {
-margin-bottom: 2rem;
-}
-a {
-color: #0056b3;
-text-decoration: none;
-}
-a:hover {
-text-decoration: underline;
-}
-h1 {
-font-size: 2.5rem;
-margin-bottom: 1.5rem;
-}
-p {
-line-height: 1.6;
-margin-bottom: 1.5rem;
-}
-</style>
