@@ -9,7 +9,8 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^5.15.2"
+    "astro": "^5.15.2",
+    "tuicss": "^2.1.2"
   },
   "devDependencies": {
     "prettier": "^3.6.2",

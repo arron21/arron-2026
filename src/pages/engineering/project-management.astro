@@ -3,46 +3,22 @@ import Layout from '../../layouts/Layout.astro';
 ---
 
 <Layout>
-<main>
-<nav>
-<a href="/">&larr; Back to Home</a>
-</nav>
-<article>
-<h1>Project Management</h1>
-<p>
-The best code I have seen has been created as a result of enthusiasm and collaboration.
-</p>
-<p>
-Morale and teamwork are what really matter. Steve Jobs once said "If you want to hire great people and have them stay working for you, you have to let them make a lot of decisions, and you have to be run by ideas, not hierarchy". I believe once you develop a culture of trust and respect, you can achieve great things.
-</p>
-</article>
-</main>
+	<div class="tui-window blue-168" style="margin: 2rem auto; max-width: 760px; display: block;">
+		<fieldset class="tui-fieldset white-255-border">
+			<legend class="white-255-text">Project Management</legend>
+			<p class="white-255-text">
+				<a href="/" class="cyan-255-text">&larr; Back to Home</a>
+			</p>
+			<h1 class="white-255-text">Project Management</h1>
+			<p class="white-255-text">
+				The best code I have seen has been created as a result of enthusiasm and collaboration.
+			</p>
+			<p class="white-255-text">
+				Morale and teamwork are what really matter. Steve Jobs once said "If you want to hire great
+				people and have them stay working for you, you have to let them make a lot of decisions, and
+				you have to be run by ideas, not hierarchy". I believe once you develop a culture of trust and
+				respect, you can achieve great things.
+			</p>
+		</fieldset>
+	</div>
 </Layout>
-
-<style>
-main {
-margin: auto;
-padding: 1rem;
-max-width: 800px;
-color: #333;
-font-family: system-ui, sans-serif;
-}
-nav {
-margin-bottom: 2rem;
-}
-a {
-color: #0056b3;
-text-decoration: none;
-}
-a:hover {
-text-decoration: underline;
-}
-h1 {
-font-size: 2.5rem;
-margin-bottom: 1.5rem;
-}
-p {
-line-height: 1.6;
-margin-bottom: 1.5rem;
-}
-</style>

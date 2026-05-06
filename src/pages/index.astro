@@ -3,96 +3,44 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout>
-<main>
-<section>
-<h1>Hello, I'm Arron</h1>
-<h2>Full Stack Software Engineer</h2>
-<p>
-With a passion for creating efficient, scalable, and intuitive digital experiences, I specialize in building robust applications that bring ideas to life. From frontend to backend, I craft solutions with precision, keeping the user experience at the forefront
-</p>
+	<div class="tui-window blue-168" style="margin: 2rem auto; max-width: 700px; display: block;">
+		<fieldset class="tui-fieldset white-255-border">
+			<legend class="white-255-text">Welcome</legend>
+			<h1 class="white-255-text">Hello, I'm Arron</h1>
+			<h2 class="cyan-255-text">Full Stack Software Engineer</h2>
+			<p class="white-255-text">
+				With a passion for creating efficient, scalable, and intuitive digital experiences, I specialize
+				in building robust applications that bring ideas to life. From frontend to backend, I craft
+				solutions with precision, keeping the user experience at the forefront.
+			</p>
+		</fieldset>
+	</div>
 
-<nav>
-<ul>
-<li><a href="/web-development">Web Development</a></li>
-<li><a href="/photography">Photography</a></li>
-<li><a href="/about">About</a></li>
-<li><a href="/contact">Contact</a></li>
-</ul>
-</nav>
-</section>
-<!-- Hiding the brands section for now as per request -->
-<!--
-<section>
-<h3>Brands I've worked with</h3>
-<ul class="brands">
-<li><img src="/images/bank-of-america.svg" alt="Bank of America Logo" /></li>
-<li><img src="/images/corsearch.svg" alt="Corsearch Logo" /></li>
-<li><img src="/images/freddie-mac.svg" alt="Freddie Mac Logo" /></li>
-<li><img src="/images/glidewell.png" alt="Glidewell Logo" /></li>
-<li><img src="/images/special-olympics.svg" alt="Special Olympics Logo" /></li>
-<li><img src="/images/wolters-kluwer.svg" alt="Wolters Kluwer Logo" /></li>
-</ul>
-</section>
--->
-</main>
+	<div class="tui-window black-168" style="margin: 0 auto 2rem; max-width: 700px; display: block;">
+		<fieldset class="tui-fieldset white-168-border">
+			<legend class="white-168-text">Navigate</legend>
+			<ul class="nav-list">
+				<li><a href="/web-development" class="tui-button cyan-168 black-text">[ Web Development ]</a></li>
+				<li><a href="/photography" class="tui-button cyan-168 black-text">[ Photography ]</a></li>
+				<li><a href="/about" class="tui-button cyan-168 black-text">[ About ]</a></li>
+				<li><a href="/contact" class="tui-button cyan-168 black-text">[ Contact ]</a></li>
+			</ul>
+		</fieldset>
+	</div>
 </Layout>
 
 <style>
-main {
-margin: auto;
-padding: 1rem;
-max-width: 800px;
-color: #333;
-font-family: system-ui, sans-serif;
-}
-h1 {
-font-size: 3rem;
-font-weight: 700;
-line-height: 1;
-margin-bottom: 0.5em;
-}
-h2 {
-font-size: 1.5rem;
-color: #666;
-margin-bottom: 1em;
-}
-p {
-line-height: 1.6;
-margin-bottom: 2em;
-}
-section {
-margin-bottom: 3rem;
-}
-ul {
-list-style: none;
-padding: 0;
-display: flex;
-gap: 1rem;
-flex-wrap: wrap;
-}
-.brands {
-align-items: center;
-justify-content: space-around;
-gap: 2rem;
-margin-top: 1.5rem;
-}
-.brands img {
-width: 140px;
-height: 48px;
-object-fit: contain;
-filter: grayscale(100%);
-opacity: 0.7;
-transition: all 0.2s ease-in-out;
-}
-.brands img:hover {
-filter: grayscale(0%);
-opacity: 1;
-}
-a {
-color: #0056b3;
-text-decoration: none;
-}
-a:hover {
-text-decoration: underline;
-}
+	.nav-list {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.75rem;
+	}
+
+	.nav-list a {
+		text-decoration: none;
+		display: inline-block;
+	}
 </style>
