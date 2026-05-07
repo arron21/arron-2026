@@ -9,7 +9,7 @@ import Layout from '../layouts/Layout.astro';
 			<p class="white-255-text">
 				<a href="/" class="cyan-255-text">&larr; Back to Home</a>
 			</p>
-			<form class="contact-form">
+			<form name="contact" method="POST" data-netlify="true" class="contact-form">
 				<div class="form-group">
 					<label class="white-255-text" for="email">Email</label>
 					<input class="tui-input" type="email" id="email" name="email" required />
