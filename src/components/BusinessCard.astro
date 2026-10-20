@@ -41,7 +41,7 @@
 					</div>
 
 					<div class="card-flip-hint yellow-255-text">
-						<span class="hint-arrow">&larr;</span> SWIPE OR TAP FOR QR CODE <span class="hint-arrow">&rarr;</span>
+						<span class="hint-arrow">&larr;</span> SWIPE FOR QR CODE <span class="hint-arrow">&rarr;</span>
 					</div>
 				</div>
 			</div>
@@ -75,7 +75,7 @@
 					</div>
 
 					<div class="card-flip-hint yellow-255-text">
-						<span class="hint-arrow">&larr;</span> SWIPE OR TAP FOR DETAILS <span class="hint-arrow">&rarr;</span>
+						<span class="hint-arrow">&larr;</span> SWIPE FOR DETAILS <span class="hint-arrow">&rarr;</span>
 					</div>
 				</div>
 			</div>
@@ -83,15 +83,8 @@
 		</div>
 	</div>
 
-	<!-- Action Controls -->
-	<div class="card-actions-bar">
-		<button type="button" id="flip-action-btn" class="tui-button yellow-255 black-text">
-			[ ⟳ Flip Card / QR Code ]
-		</button>
-	</div>
-
 	<p class="card-gesture-hint white-168-text">
-		💡 Swipe or click card to flip between info & QR code
+		💡 Swipe horizontally to flip between info & QR code
 	</p>
 </div>
 
@@ -294,27 +287,6 @@
 		letter-spacing: 0.5px;
 	}
 
-	/* Action Buttons */
-	.card-actions-bar {
-		display: flex;
-		width: 100%;
-		max-width: 360px;
-		justify-content: center;
-	}
-
-	.card-actions-bar button {
-		width: 100%;
-		padding: 0.6rem 1rem;
-		font-size: 0.95rem;
-		font-weight: bold;
-		cursor: pointer;
-		box-shadow: 2px 2px 0px #000;
-	}
-
-	.card-actions-bar button:hover {
-		filter: brightness(1.1);
-	}
-
 	.card-gesture-hint {
 		font-size: 0.75rem;
 		margin: 0;
@@ -324,7 +296,6 @@
 
 <script is:inline>
 	(function () {
-		const flipActionBtn = document.getElementById('flip-action-btn');
 		const cardScene = document.getElementById('flip-card-scene');
 		const cardInner = document.getElementById('flip-card-inner');
 
@@ -363,9 +334,7 @@
 			applyFlipState(!isFlipped, true);
 		}
 
-		if (flipActionBtn) flipActionBtn.addEventListener('click', toggleFlip);
-
-		// Pointer & Touch Events
+		// Pointer & Touch Events - ONLY SWIPE TRIGGERS FLIP
 		function onPointerStart(clientX, clientY) {
 			isTracking = true;
 			startX = clientX;
@@ -396,13 +365,14 @@
 			isTracking = false;
 			const duration = Date.now() - startTime;
 			const distanceX = Math.abs(deltaX);
-			const isSwipe = distanceX > 30 || (distanceX > 15 && duration < 250);
-			const isTap = distanceX < 8 && Math.abs(deltaY) < 8 && duration < 300;
 
-			if (isSwipe || isTap) {
+			// ONLY horizontal swipe triggers flip (taps and non-drag clicks do NOT flip)
+			const isSwipe = distanceX > 35 || (distanceX > 18 && duration < 250);
+
+			if (isSwipe) {
 				toggleFlip();
 			} else {
-				// Snap back to current state
+				// Snap back to current state without flipping
 				applyFlipState(isFlipped, true);
 			}
 		}
