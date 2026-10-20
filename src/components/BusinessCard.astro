@@ -13,15 +13,15 @@ const qrSvg = await QRCode.toString('https://arronmccrory.com/', {
 });
 ---
 
-<!-- Mobile Trigger Button Container -->
-<div class="mobile-card-trigger-container">
+<!-- Trigger Button Container (Visible on all screen sizes) -->
+<div class="card-trigger-container">
 	<button
 		type="button"
 		id="open-business-card-btn"
 		class="tui-button yellow-255 black-text card-trigger-btn"
-		aria-label="View Business Card"
+		aria-label="View Business Card & QR Code"
 	>
-		[ View Business Card ]
+		[ View Business Card & QR Code ]
 	</button>
 </div>
 
@@ -79,7 +79,7 @@ const qrSvg = await QRCode.toString('https://arronmccrory.com/', {
 						</div>
 
 						<div class="card-flip-hint yellow-255-text">
-							<span class="hint-arrow">&larr;</span> SWIPE OR TAP TO FLIP <span class="hint-arrow">&rarr;</span>
+							<span class="hint-arrow">&larr;</span> SWIPE, DRAG OR TAP FOR QR CODE <span class="hint-arrow">&rarr;</span>
 						</div>
 					</div>
 				</div>
@@ -109,7 +109,7 @@ const qrSvg = await QRCode.toString('https://arronmccrory.com/', {
 						</div>
 
 						<div class="card-flip-hint yellow-255-text">
-							<span class="hint-arrow">&larr;</span> SWIPE OR TAP TO FLIP BACK <span class="hint-arrow">&rarr;</span>
+							<span class="hint-arrow">&larr;</span> SWIPE, DRAG OR TAP FOR DETAILS <span class="hint-arrow">&rarr;</span>
 						</div>
 					</div>
 				</div>
@@ -120,7 +120,7 @@ const qrSvg = await QRCode.toString('https://arronmccrory.com/', {
 		<!-- Action bar below card -->
 		<div class="card-actions-bar">
 			<button type="button" id="flip-action-btn" class="tui-button cyan-168 black-text">
-				[ ⟳ Flip Card ]
+				[ ⟳ Flip Card / QR Code ]
 			</button>
 			<button type="button" id="dismiss-action-btn" class="tui-button white-168 black-text">
 				[ Close ]
@@ -128,32 +128,27 @@ const qrSvg = await QRCode.toString('https://arronmccrory.com/', {
 		</div>
 
 		<p class="card-gesture-hint white-168-text">
-			💡 Swipe left/right or tap card to flip
+			💡 Swipe / drag or click card to flip & view QR code
 		</p>
 	</div>
 </div>
 
 <style>
-	/* Mobile trigger button - visible only on mobile screens (< 768px) */
-	.mobile-card-trigger-container {
-		display: none;
+	/* Trigger button - visible on ALL screen sizes */
+	.card-trigger-container {
+		display: block;
 		margin: 1.25rem 0 0.5rem;
 		text-align: center;
 	}
 
-	@media (max-width: 767px) {
-		.mobile-card-trigger-container {
-			display: block;
-		}
-	}
-
 	.card-trigger-btn {
+		display: inline-block;
 		width: 100%;
-		padding: 0.75rem 1rem;
+		max-width: 380px;
+		padding: 0.75rem 1.25rem;
 		font-size: 1rem;
 		font-weight: bold;
 		cursor: pointer;
-		display: block;
 		text-align: center;
 		box-shadow: 2px 2px 0px #000;
 	}
