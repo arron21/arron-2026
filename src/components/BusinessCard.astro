@@ -1,0 +1,598 @@
+---
+import QRCode from 'qrcode';
+
+// Generate SVG QR code for https://arronmccrory.com at build time
+const qrSvg = await QRCode.toString('https://arronmccrory.com/', {
+	type: 'svg',
+	margin: 1,
+	width: 130,
+	color: {
+		dark: '#000000',
+		light: '#ffffff',
+	},
+});
+---
+
+<!-- Mobile Trigger Button Container -->
+<div class="mobile-card-trigger-container">
+	<button
+		type="button"
+		id="open-business-card-btn"
+		class="tui-button yellow-255 black-text card-trigger-btn"
+		aria-label="View Business Card"
+	>
+		[ View Business Card ]
+	</button>
+</div>
+
+<!-- Modal Overlay for Business Card -->
+<div id="business-card-modal" class="card-modal-backdrop" aria-hidden="true">
+	<div class="card-modal-dialog">
+		<!-- Window Header -->
+		<div class="card-modal-header">
+			<span class="card-modal-title cyan-255-text">CARD.EXE</span>
+			<button
+				type="button"
+				id="close-business-card-btn"
+				class="tui-button red-168 white-255-text close-btn"
+				aria-label="Close Business Card"
+			>
+				[ X ]
+			</button>
+		</div>
+
+		<!-- 3D Flip Card Scene -->
+		<div class="flip-card-scene" id="flip-card-scene">
+			<div class="flip-card-inner" id="flip-card-inner">
+				
+				<!-- Front Side -->
+				<div class="flip-card-face flip-card-front tui-window blue-168">
+					<div class="card-border-box">
+						<div class="card-top-row">
+							<span class="card-badge yellow-255-text">[ DIGITAL CARD ]</span>
+							<span class="card-status green-255-text">● ONLINE</span>
+						</div>
+
+						<div class="card-identity">
+							<h3 class="card-name white-255-text">ARRON McCRORY</h3>
+							<p class="card-title cyan-255-text">Senior Frontend Engineer</p>
+							<p class="card-subtitle white-168-text">Frontend Architect</p>
+						</div>
+
+						<div class="card-specialties white-255-text">
+							<span>Angular</span> • <span>TypeScript</span> • <span>Design Systems</span>
+						</div>
+
+						<div class="card-contact-info">
+							<div class="card-info-row">
+								<span class="cyan-255-text">WEB:</span>
+								<span class="white-255-text">arronmccrory.com</span>
+							</div>
+							<div class="card-info-row">
+								<span class="cyan-255-text">GIT:</span>
+								<span class="white-255-text">github.com/arron21</span>
+							</div>
+							<div class="card-info-row">
+								<span class="cyan-255-text">IN:</span>
+								<span class="white-255-text">linkedin.com/in/arronmccrory</span>
+							</div>
+						</div>
+
+						<div class="card-flip-hint yellow-255-text">
+							<span class="hint-arrow">&larr;</span> SWIPE OR TAP TO FLIP <span class="hint-arrow">&rarr;</span>
+						</div>
+					</div>
+				</div>
+
+				<!-- Back Side -->
+				<div class="flip-card-face flip-card-back tui-window black-168">
+					<div class="card-border-box">
+						<div class="card-top-row">
+							<span class="card-badge cyan-255-text">[ SCAN TO VISIT ]</span>
+							<span class="card-status yellow-255-text">HOMEPAGE</span>
+						</div>
+
+						<div class="card-qr-container">
+							<a
+								href="https://arronmccrory.com/"
+								class="card-qr-link"
+								aria-label="Visit Homepage"
+								target="_blank"
+								rel="noopener noreferrer"
+							>
+								<div class="card-qr-frame">
+									<Fragment set:html={qrSvg} />
+								</div>
+							</a>
+							<p class="card-qr-label white-255-text">Scan with phone camera</p>
+							<p class="card-qr-url cyan-255-text">arronmccrory.com</p>
+						</div>
+
+						<div class="card-flip-hint yellow-255-text">
+							<span class="hint-arrow">&larr;</span> SWIPE OR TAP TO FLIP BACK <span class="hint-arrow">&rarr;</span>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+		<!-- Action bar below card -->
+		<div class="card-actions-bar">
+			<button type="button" id="flip-action-btn" class="tui-button cyan-168 black-text">
+				[ ⟳ Flip Card ]
+			</button>
+			<button type="button" id="dismiss-action-btn" class="tui-button white-168 black-text">
+				[ Close ]
+			</button>
+		</div>
+
+		<p class="card-gesture-hint white-168-text">
+			💡 Swipe left/right or tap card to flip
+		</p>
+	</div>
+</div>
+
+<style>
+	/* Mobile trigger button - visible only on mobile screens (< 768px) */
+	.mobile-card-trigger-container {
+		display: none;
+		margin: 1.25rem 0 0.5rem;
+		text-align: center;
+	}
+
+	@media (max-width: 767px) {
+		.mobile-card-trigger-container {
+			display: block;
+		}
+	}
+
+	.card-trigger-btn {
+		width: 100%;
+		padding: 0.75rem 1rem;
+		font-size: 1rem;
+		font-weight: bold;
+		cursor: pointer;
+		display: block;
+		text-align: center;
+		box-shadow: 2px 2px 0px #000;
+	}
+
+	.card-trigger-btn:hover {
+		filter: brightness(1.1);
+	}
+
+	/* Modal Backdrop */
+	.card-modal-backdrop {
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		width: 100vw;
+		height: 100vh;
+		background: rgba(0, 0, 0, 0.88);
+		backdrop-filter: blur(4px);
+		-webkit-backdrop-filter: blur(4px);
+		z-index: 99999;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 1rem;
+		opacity: 0;
+		visibility: hidden;
+		transition: opacity 0.25s ease, visibility 0.25s ease;
+	}
+
+	.card-modal-backdrop.is-open {
+		opacity: 1;
+		visibility: visible;
+	}
+
+	/* Modal Dialog Box */
+	.card-modal-dialog {
+		width: 100%;
+		max-width: 360px;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 0.75rem;
+	}
+
+	.card-modal-header {
+		width: 100%;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 0 4px;
+	}
+
+	.card-modal-title {
+		font-weight: bold;
+		font-size: 0.95rem;
+		letter-spacing: 1px;
+	}
+
+	.close-btn {
+		cursor: pointer;
+		padding: 2px 8px;
+		font-weight: bold;
+	}
+
+	/* 3D Flip Card Scene & Inner */
+	.flip-card-scene {
+		width: 100%;
+		height: 230px;
+		perspective: 1200px;
+		cursor: grab;
+		user-select: none;
+		-webkit-user-select: none;
+		touch-action: none;
+	}
+
+	.flip-card-scene:active {
+		cursor: grabbing;
+	}
+
+	.flip-card-inner {
+		position: relative;
+		width: 100%;
+		height: 100%;
+		text-align: left;
+		transition: transform 0.6s cubic-bezier(0.2, 0.85, 0.35, 1.2);
+		transform-style: preserve-3d;
+		-webkit-transform-style: preserve-3d;
+	}
+
+	.flip-card-inner.is-flipped {
+		transform: rotateY(180deg);
+		-webkit-transform: rotateY(180deg);
+	}
+
+	/* Faces */
+	.flip-card-face {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		-webkit-backface-visibility: hidden;
+		backface-visibility: hidden;
+		border: 2px solid #a8a8a8;
+		box-shadow: 4px 4px 0px #000;
+		overflow: hidden;
+		padding: 6px;
+		box-sizing: border-box;
+	}
+
+	.flip-card-front {
+		transform: rotateY(0deg);
+		-webkit-transform: rotateY(0deg);
+	}
+
+	.flip-card-back {
+		transform: rotateY(180deg);
+		-webkit-transform: rotateY(180deg);
+	}
+
+	.card-border-box {
+		width: 100%;
+		height: 100%;
+		border: 1px dashed rgba(255, 255, 255, 0.4);
+		padding: 10px 12px;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		box-sizing: border-box;
+	}
+
+	/* Front Card Elements */
+	.card-top-row {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		font-size: 0.75rem;
+	}
+
+	.card-badge {
+		font-weight: bold;
+		letter-spacing: 0.5px;
+	}
+
+	.card-status {
+		font-size: 0.7rem;
+	}
+
+	.card-identity {
+		margin: 2px 0;
+	}
+
+	.card-name {
+		font-size: 1.2rem;
+		margin: 0;
+		letter-spacing: 1px;
+		font-weight: bold;
+		line-height: 1.2;
+	}
+
+	.card-title {
+		font-size: 0.85rem;
+		margin: 2px 0 0;
+		font-weight: bold;
+	}
+
+	.card-subtitle {
+		font-size: 0.75rem;
+		margin: 1px 0 0;
+	}
+
+	.card-specialties {
+		font-size: 0.75rem;
+		line-height: 1.3;
+		opacity: 0.9;
+	}
+
+	.card-contact-info {
+		font-size: 0.75rem;
+		display: flex;
+		flex-direction: column;
+		gap: 2px;
+		background: rgba(0, 0, 0, 0.25);
+		padding: 3px 6px;
+		border-left: 2px solid #00a8a8;
+	}
+
+	.card-info-row {
+		display: flex;
+		gap: 6px;
+	}
+
+	.card-flip-hint {
+		text-align: center;
+		font-size: 0.72rem;
+		font-weight: bold;
+		letter-spacing: 0.5px;
+		animation: pulse-hint 2s infinite ease-in-out;
+	}
+
+	@keyframes pulse-hint {
+		0%, 100% { opacity: 0.8; }
+		50% { opacity: 1; }
+	}
+
+	.hint-arrow {
+		display: inline-block;
+	}
+
+	/* Back Card Elements */
+	.card-qr-container {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: 4px;
+		margin: auto 0;
+	}
+
+	.card-qr-link {
+		display: inline-block;
+		text-decoration: none;
+	}
+
+	.card-qr-frame {
+		background: #ffffff;
+		padding: 4px;
+		border: 2px solid #a8a8a8;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		box-shadow: 2px 2px 0px #000;
+	}
+
+	.card-qr-frame :global(svg) {
+		width: 100px;
+		height: 100px;
+		display: block;
+	}
+
+	.card-qr-label {
+		font-size: 0.75rem;
+		margin: 0;
+	}
+
+	.card-qr-url {
+		font-size: 0.85rem;
+		font-weight: bold;
+		margin: 0;
+		letter-spacing: 0.5px;
+	}
+
+	/* Action Buttons */
+	.card-actions-bar {
+		display: flex;
+		gap: 0.75rem;
+		width: 100%;
+		justify-content: center;
+	}
+
+	.card-actions-bar button {
+		flex: 1;
+		padding: 0.5rem;
+		font-size: 0.85rem;
+		font-weight: bold;
+		cursor: pointer;
+	}
+
+	.card-gesture-hint {
+		font-size: 0.75rem;
+		margin: 0;
+		text-align: center;
+	}
+</style>
+
+<script is:inline>
+	(function () {
+		const openBtn = document.getElementById('open-business-card-btn');
+		const closeBtn = document.getElementById('close-business-card-btn');
+		const dismissBtn = document.getElementById('dismiss-action-btn');
+		const flipActionBtn = document.getElementById('flip-action-btn');
+		const modal = document.getElementById('business-card-modal');
+		const cardScene = document.getElementById('flip-card-scene');
+		const cardInner = document.getElementById('flip-card-inner');
+
+		if (!modal || !cardInner || !cardScene) return;
+
+		let isFlipped = false;
+		let isTracking = false;
+		let startX = 0;
+		let startY = 0;
+		let deltaX = 0;
+		let deltaY = 0;
+		let startTime = 0;
+
+		function openModal() {
+			modal.classList.add('is-open');
+			modal.setAttribute('aria-hidden', 'false');
+			document.body.style.overflow = 'hidden';
+		}
+
+		function closeModal() {
+			modal.classList.remove('is-open');
+			modal.setAttribute('aria-hidden', 'true');
+			document.body.style.overflow = '';
+		}
+
+		function applyFlipState(flipped, animated) {
+			isFlipped = flipped;
+			cardInner.style.transition = animated ? 'transform 0.6s cubic-bezier(0.2, 0.85, 0.35, 1.2)' : 'none';
+			if (isFlipped) {
+				cardInner.classList.add('is-flipped');
+				cardInner.style.transform = 'rotateY(180deg)';
+			} else {
+				cardInner.classList.remove('is-flipped');
+				cardInner.style.transform = 'rotateY(0deg)';
+			}
+
+			if (animated) {
+				setTimeout(function () {
+					if (!isTracking) {
+						cardInner.style.transform = '';
+						cardInner.style.transition = '';
+					}
+				}, 600);
+			}
+		}
+
+		function toggleFlip() {
+			applyFlipState(!isFlipped, true);
+		}
+
+		if (openBtn) openBtn.addEventListener('click', openModal);
+		if (closeBtn) closeBtn.addEventListener('click', closeModal);
+		if (dismissBtn) dismissBtn.addEventListener('click', closeModal);
+		if (flipActionBtn) flipActionBtn.addEventListener('click', toggleFlip);
+
+		// Allow any other trigger elements (e.g. from nav or buttons)
+		document.querySelectorAll('.open-business-card-trigger').forEach(function (el) {
+			el.addEventListener('click', openModal);
+		});
+
+		window.openBusinessCard = openModal;
+
+		// Close when tapping modal backdrop
+		modal.addEventListener('click', function (e) {
+			if (e.target === modal) {
+				closeModal();
+			}
+		});
+
+		// Close on ESC key
+		document.addEventListener('keydown', function (e) {
+			if (e.key === 'Escape' && modal.classList.contains('is-open')) {
+				closeModal();
+			}
+		});
+
+		// Pointer & Touch Events
+		function onPointerStart(clientX, clientY) {
+			isTracking = true;
+			startX = clientX;
+			startY = clientY;
+			deltaX = 0;
+			deltaY = 0;
+			startTime = Date.now();
+			cardInner.style.transition = 'none';
+		}
+
+		function onPointerMove(clientX, clientY, e) {
+			if (!isTracking) return;
+			deltaX = clientX - startX;
+			deltaY = clientY - startY;
+
+			if (e && e.cancelable) {
+				e.preventDefault();
+			}
+
+			// Interactive drag tilt during swipe
+			const baseRotation = isFlipped ? 180 : 0;
+			const dragRotation = Math.max(-180, Math.min(180, (deltaX / 220) * 180));
+			cardInner.style.transform = 'rotateY(' + (baseRotation + dragRotation) + 'deg)';
+		}
+
+		function onPointerEnd() {
+			if (!isTracking) return;
+			isTracking = false;
+			const duration = Date.now() - startTime;
+			const distanceX = Math.abs(deltaX);
+			const isSwipe = distanceX > 30 || (distanceX > 15 && duration < 250);
+			const isTap = distanceX < 8 && Math.abs(deltaY) < 8 && duration < 300;
+
+			if (isSwipe || isTap) {
+				toggleFlip();
+			} else {
+				// Snap back to current state
+				applyFlipState(isFlipped, true);
+			}
+		}
+
+		// Touch events
+		cardScene.addEventListener('touchstart', function (e) {
+			if (e.touches.length === 1) {
+				onPointerStart(e.touches[0].clientX, e.touches[0].clientY);
+			}
+		}, { passive: true });
+
+		cardScene.addEventListener('touchmove', function (e) {
+			if (e.touches.length === 1) {
+				onPointerMove(e.touches[0].clientX, e.touches[0].clientY, e);
+			}
+		}, { passive: false });
+
+		cardScene.addEventListener('touchend', function () {
+			onPointerEnd();
+		});
+
+		cardScene.addEventListener('touchcancel', function () {
+			onPointerEnd();
+		});
+
+		// Mouse events (for desktop dev tools / browser testing)
+		cardScene.addEventListener('mousedown', function (e) {
+			// Don't trigger if clicked on child interactive link
+			if (e.target.closest('a')) return;
+			onPointerStart(e.clientX, e.clientY);
+		});
+
+		window.addEventListener('mousemove', function (e) {
+			if (isTracking) {
+				onPointerMove(e.clientX, e.clientY, e);
+			}
+		});
+
+		window.addEventListener('mouseup', function () {
+			if (isTracking) {
+				onPointerEnd();
+			}
+		});
+	})();
+</script>

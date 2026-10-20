@@ -10,9 +10,12 @@
   },
   "dependencies": {
     "astro": "^5.15.2",
+    "character-entities-html4": "^2.1.0",
+    "qrcode": "^1.5.4",
     "tuicss": "^2.1.2"
   },
   "devDependencies": {
+    "@types/qrcode": "^1.5.6",
     "prettier": "^3.6.2",
     "prettier-plugin-astro": "^0.14.1"
   }
