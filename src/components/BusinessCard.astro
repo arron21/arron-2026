@@ -1,222 +1,114 @@
 ---
-import QRCode from 'qrcode';
-
-// Generate SVG QR code for https://arronmccrory.com at build time
-const qrSvg = await QRCode.toString('https://arronmccrory.com/', {
-	type: 'svg',
-	margin: 1,
-	width: 130,
-	color: {
-		dark: '#000000',
-		light: '#ffffff',
-	},
-});
+// Standalone BusinessCard component with zero runtime or build-time dependencies
 ---
 
-<!-- Trigger Button Container (Visible on all screen sizes) -->
-<div class="card-trigger-container">
-	<button
-		type="button"
-		id="open-business-card-btn"
-		class="tui-button yellow-255 black-text card-trigger-btn"
-		aria-label="View Business Card & QR Code"
-	>
-		[ View Business Card & QR Code ]
-	</button>
-</div>
+<div class="business-card-wrapper">
+	<!-- 3D Flip Card Scene -->
+	<div class="flip-card-scene" id="flip-card-scene">
+		<div class="flip-card-inner" id="flip-card-inner">
+			
+			<!-- Front Side -->
+			<div class="flip-card-face flip-card-front tui-window blue-168">
+				<div class="card-border-box">
+					<div class="card-top-row">
+						<span class="card-badge yellow-255-text">[ DIGITAL CARD ]</span>
+						<span class="card-status green-255-text">● ONLINE</span>
+					</div>
 
-<!-- Modal Overlay for Business Card -->
-<div id="business-card-modal" class="card-modal-backdrop" aria-hidden="true">
-	<div class="card-modal-dialog">
-		<!-- Window Header -->
-		<div class="card-modal-header">
-			<span class="card-modal-title cyan-255-text">CARD.EXE</span>
-			<button
-				type="button"
-				id="close-business-card-btn"
-				class="tui-button red-168 white-255-text close-btn"
-				aria-label="Close Business Card"
-			>
-				[ X ]
-			</button>
-		</div>
+					<div class="card-identity">
+						<h3 class="card-name white-255-text">ARRON McCRORY</h3>
+						<p class="card-title cyan-255-text">Senior Frontend Engineer</p>
+						<p class="card-subtitle white-168-text">Frontend Architect</p>
+					</div>
 
-		<!-- 3D Flip Card Scene -->
-		<div class="flip-card-scene" id="flip-card-scene">
-			<div class="flip-card-inner" id="flip-card-inner">
-				
-				<!-- Front Side -->
-				<div class="flip-card-face flip-card-front tui-window blue-168">
-					<div class="card-border-box">
-						<div class="card-top-row">
-							<span class="card-badge yellow-255-text">[ DIGITAL CARD ]</span>
-							<span class="card-status green-255-text">● ONLINE</span>
+					<div class="card-specialties white-255-text">
+						<span>Angular</span> • <span>TypeScript</span> • <span>Design Systems</span>
+					</div>
+
+					<div class="card-contact-info">
+						<div class="card-info-row">
+							<span class="cyan-255-text">WEB:</span>
+							<span class="white-255-text">arronmccrory.com</span>
 						</div>
-
-						<div class="card-identity">
-							<h3 class="card-name white-255-text">ARRON McCRORY</h3>
-							<p class="card-title cyan-255-text">Senior Frontend Engineer</p>
-							<p class="card-subtitle white-168-text">Frontend Architect</p>
+						<div class="card-info-row">
+							<span class="cyan-255-text">GIT:</span>
+							<span class="white-255-text">github.com/arron21</span>
 						</div>
-
-						<div class="card-specialties white-255-text">
-							<span>Angular</span> • <span>TypeScript</span> • <span>Design Systems</span>
-						</div>
-
-						<div class="card-contact-info">
-							<div class="card-info-row">
-								<span class="cyan-255-text">WEB:</span>
-								<span class="white-255-text">arronmccrory.com</span>
-							</div>
-							<div class="card-info-row">
-								<span class="cyan-255-text">GIT:</span>
-								<span class="white-255-text">github.com/arron21</span>
-							</div>
-							<div class="card-info-row">
-								<span class="cyan-255-text">IN:</span>
-								<span class="white-255-text">linkedin.com/in/arronmccrory</span>
-							</div>
-						</div>
-
-						<div class="card-flip-hint yellow-255-text">
-							<span class="hint-arrow">&larr;</span> SWIPE, DRAG OR TAP FOR QR CODE <span class="hint-arrow">&rarr;</span>
+						<div class="card-info-row">
+							<span class="cyan-255-text">IN:</span>
+							<span class="white-255-text">linkedin.com/in/arronmccrory</span>
 						</div>
 					</div>
-				</div>
 
-				<!-- Back Side -->
-				<div class="flip-card-face flip-card-back tui-window black-168">
-					<div class="card-border-box">
-						<div class="card-top-row">
-							<span class="card-badge cyan-255-text">[ SCAN TO VISIT ]</span>
-							<span class="card-status yellow-255-text">HOMEPAGE</span>
-						</div>
-
-						<div class="card-qr-container">
-							<a
-								href="https://arronmccrory.com/"
-								class="card-qr-link"
-								aria-label="Visit Homepage"
-								target="_blank"
-								rel="noopener noreferrer"
-							>
-								<div class="card-qr-frame">
-									<Fragment set:html={qrSvg} />
-								</div>
-							</a>
-							<p class="card-qr-label white-255-text">Scan with phone camera</p>
-							<p class="card-qr-url cyan-255-text">arronmccrory.com</p>
-						</div>
-
-						<div class="card-flip-hint yellow-255-text">
-							<span class="hint-arrow">&larr;</span> SWIPE, DRAG OR TAP FOR DETAILS <span class="hint-arrow">&rarr;</span>
-						</div>
+					<div class="card-flip-hint yellow-255-text">
+						<span class="hint-arrow">&larr;</span> SWIPE OR TAP FOR QR CODE <span class="hint-arrow">&rarr;</span>
 					</div>
 				</div>
-
 			</div>
-		</div>
 
-		<!-- Action bar below card -->
-		<div class="card-actions-bar">
-			<button type="button" id="flip-action-btn" class="tui-button cyan-168 black-text">
-				[ ⟳ Flip Card / QR Code ]
-			</button>
-			<button type="button" id="dismiss-action-btn" class="tui-button white-168 black-text">
-				[ Close ]
-			</button>
-		</div>
+			<!-- Back Side -->
+			<div class="flip-card-face flip-card-back tui-window black-168">
+				<div class="card-border-box">
+					<div class="card-top-row">
+						<span class="card-badge cyan-255-text">[ SCAN TO CONNECT ]</span>
+						<span class="card-status yellow-255-text">HOMEPAGE</span>
+					</div>
 
-		<p class="card-gesture-hint white-168-text">
-			💡 Swipe / drag or click card to flip & view QR code
-		</p>
+					<div class="card-qr-container">
+						<a
+							href="https://arronmccrory.com/"
+							class="card-qr-link"
+							aria-label="Visit Homepage"
+							target="_blank"
+							rel="noopener noreferrer"
+						>
+							<div class="card-qr-frame">
+								<!-- Crisp Vector QR Code linking to https://arronmccrory.com/ -->
+								<svg xmlns="http://www.w3.org/2000/svg" width="115" height="115" viewBox="0 0 27 27" shape-rendering="crispEdges">
+									<path fill="#ffffff" d="M0 0h27v27H0z"/>
+									<path stroke="#000000" d="M1 1.5h7m2 0h2m2 0h1m2 0h1m1 0h7M1 2.5h1m5 0h1m2 0h1m1 0h5m2 0h1m5 0h1M1 3.5h1m1 0h3m1 0h1m1 0h2m1 0h1m2 0h1m3 0h1m1 0h3m1 0h1M1 4.5h1m1 0h3m1 0h1m1 0h4m1 0h4m1 0h1m1 0h3m1 0h1M1 5.5h1m1 0h3m1 0h1m1 0h2m2 0h1m1 0h1m1 0h1m1 0h1m1 0h3m1 0h1M1 6.5h1m5 0h1m1 0h2m1 0h1m1 0h1m1 0h2m1 0h1m5 0h1M1 7.5h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7M9 8.5h1m1 0h1M1 9.5h1m1 0h5m2 0h1m3 0h3m2 0h5M1 10.5h2m2 0h1m3 0h1m1 0h5m1 0h2m1 0h1m3 0h1M3 11.5h2m1 0h2m3 0h2m3 0h2m1 0h2m1 0h1m1 0h2M4 12.5h1m1 0h1m6 0h1m1 0h1m9 0h1M1 13.5h2m1 0h1m2 0h1m2 0h3m1 0h1m1 0h1m1 0h2m1 0h1m1 0h3M1 14.5h1m1 0h2m1 0h1m3 0h1m2 0h2m2 0h2m1 0h1m1 0h1m1 0h1M1 15.5h1m3 0h3m1 0h2m3 0h4m1 0h4m1 0h2M1 16.5h1m2 0h1m1 0h1m2 0h3m1 0h1m2 0h2m2 0h2m3 0h1M1 17.5h1m1 0h1m1 0h7m1 0h3m1 0h5m1 0h1M9 18.5h1m6 0h2m3 0h2M1 19.5h7m3 0h4m2 0h1m1 0h1m1 0h1m1 0h3M1 20.5h1m5 0h1m1 0h2m1 0h1m2 0h1m1 0h1m3 0h2m2 0h1M1 21.5h1m1 0h3m1 0h1m1 0h1m2 0h10m1 0h1M1 22.5h1m1 0h3m1 0h1m1 0h1m3 0h2m1 0h4m1 0h5M1 23.5h1m1 0h3m1 0h1m1 0h2m3 0h2m1 0h1m4 0h2m1 0h1M1 24.5h1m5 0h1m2 0h1m4 0h4m1 0h3m2 0h1M1 25.5h7m1 0h7m2 0h1m1 0h6"/>
+								</svg>
+							</div>
+						</a>
+						<p class="card-qr-label white-255-text">Scan with phone camera</p>
+						<p class="card-qr-url cyan-255-text">arronmccrory.com</p>
+					</div>
+
+					<div class="card-flip-hint yellow-255-text">
+						<span class="hint-arrow">&larr;</span> SWIPE OR TAP FOR DETAILS <span class="hint-arrow">&rarr;</span>
+					</div>
+				</div>
+			</div>
+
+		</div>
 	</div>
+
+	<!-- Action Controls -->
+	<div class="card-actions-bar">
+		<button type="button" id="flip-action-btn" class="tui-button yellow-255 black-text">
+			[ ⟳ Flip Card / QR Code ]
+		</button>
+	</div>
+
+	<p class="card-gesture-hint white-168-text">
+		💡 Swipe or click card to flip between info & QR code
+	</p>
 </div>
 
 <style>
-	/* Trigger button - visible on ALL screen sizes */
-	.card-trigger-container {
-		display: block;
-		margin: 1.25rem 0 0.5rem;
-		text-align: center;
-	}
-
-	.card-trigger-btn {
-		display: inline-block;
+	.business-card-wrapper {
 		width: 100%;
-		max-width: 380px;
-		padding: 0.75rem 1.25rem;
-		font-size: 1rem;
-		font-weight: bold;
-		cursor: pointer;
-		text-align: center;
-		box-shadow: 2px 2px 0px #000;
-	}
-
-	.card-trigger-btn:hover {
-		filter: brightness(1.1);
-	}
-
-	/* Modal Backdrop */
-	.card-modal-backdrop {
-		position: fixed;
-		top: 0;
-		left: 0;
-		right: 0;
-		bottom: 0;
-		width: 100vw;
-		height: 100vh;
-		background: rgba(0, 0, 0, 0.88);
-		backdrop-filter: blur(4px);
-		-webkit-backdrop-filter: blur(4px);
-		z-index: 99999;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		padding: 1rem;
-		opacity: 0;
-		visibility: hidden;
-		transition: opacity 0.25s ease, visibility 0.25s ease;
-	}
-
-	.card-modal-backdrop.is-open {
-		opacity: 1;
-		visibility: visible;
-	}
-
-	/* Modal Dialog Box */
-	.card-modal-dialog {
-		width: 100%;
-		max-width: 360px;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 		gap: 0.75rem;
-	}
-
-	.card-modal-header {
-		width: 100%;
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		padding: 0 4px;
-	}
-
-	.card-modal-title {
-		font-weight: bold;
-		font-size: 0.95rem;
-		letter-spacing: 1px;
-	}
-
-	.close-btn {
-		cursor: pointer;
-		padding: 2px 8px;
-		font-weight: bold;
+		margin: 0.5rem 0;
 	}
 
 	/* 3D Flip Card Scene & Inner */
 	.flip-card-scene {
 		width: 100%;
+		max-width: 360px;
 		height: 230px;
 		perspective: 1200px;
 		cursor: grab;
@@ -384,7 +276,7 @@ const qrSvg = await QRCode.toString('https://arronmccrory.com/', {
 		box-shadow: 2px 2px 0px #000;
 	}
 
-	.card-qr-frame :global(svg) {
+	.card-qr-frame svg {
 		width: 100px;
 		height: 100px;
 		display: block;
@@ -405,17 +297,22 @@ const qrSvg = await QRCode.toString('https://arronmccrory.com/', {
 	/* Action Buttons */
 	.card-actions-bar {
 		display: flex;
-		gap: 0.75rem;
 		width: 100%;
+		max-width: 360px;
 		justify-content: center;
 	}
 
 	.card-actions-bar button {
-		flex: 1;
-		padding: 0.5rem;
-		font-size: 0.85rem;
+		width: 100%;
+		padding: 0.6rem 1rem;
+		font-size: 0.95rem;
 		font-weight: bold;
 		cursor: pointer;
+		box-shadow: 2px 2px 0px #000;
+	}
+
+	.card-actions-bar button:hover {
+		filter: brightness(1.1);
 	}
 
 	.card-gesture-hint {
@@ -427,15 +324,11 @@ const qrSvg = await QRCode.toString('https://arronmccrory.com/', {
 
 <script is:inline>
 	(function () {
-		const openBtn = document.getElementById('open-business-card-btn');
-		const closeBtn = document.getElementById('close-business-card-btn');
-		const dismissBtn = document.getElementById('dismiss-action-btn');
 		const flipActionBtn = document.getElementById('flip-action-btn');
-		const modal = document.getElementById('business-card-modal');
 		const cardScene = document.getElementById('flip-card-scene');
 		const cardInner = document.getElementById('flip-card-inner');
 
-		if (!modal || !cardInner || !cardScene) return;
+		if (!cardInner || !cardScene) return;
 
 		let isFlipped = false;
 		let isTracking = false;
@@ -444,18 +337,6 @@ const qrSvg = await QRCode.toString('https://arronmccrory.com/', {
 		let deltaX = 0;
 		let deltaY = 0;
 		let startTime = 0;
-
-		function openModal() {
-			modal.classList.add('is-open');
-			modal.setAttribute('aria-hidden', 'false');
-			document.body.style.overflow = 'hidden';
-		}
-
-		function closeModal() {
-			modal.classList.remove('is-open');
-			modal.setAttribute('aria-hidden', 'true');
-			document.body.style.overflow = '';
-		}
 
 		function applyFlipState(flipped, animated) {
 			isFlipped = flipped;
@@ -482,31 +363,7 @@ const qrSvg = await QRCode.toString('https://arronmccrory.com/', {
 			applyFlipState(!isFlipped, true);
 		}
 
-		if (openBtn) openBtn.addEventListener('click', openModal);
-		if (closeBtn) closeBtn.addEventListener('click', closeModal);
-		if (dismissBtn) dismissBtn.addEventListener('click', closeModal);
 		if (flipActionBtn) flipActionBtn.addEventListener('click', toggleFlip);
-
-		// Allow any other trigger elements (e.g. from nav or buttons)
-		document.querySelectorAll('.open-business-card-trigger').forEach(function (el) {
-			el.addEventListener('click', openModal);
-		});
-
-		window.openBusinessCard = openModal;
-
-		// Close when tapping modal backdrop
-		modal.addEventListener('click', function (e) {
-			if (e.target === modal) {
-				closeModal();
-			}
-		});
-
-		// Close on ESC key
-		document.addEventListener('keydown', function (e) {
-			if (e.key === 'Escape' && modal.classList.contains('is-open')) {
-				closeModal();
-			}
-		});
 
 		// Pointer & Touch Events
 		function onPointerStart(clientX, clientY) {
@@ -573,7 +430,6 @@ const qrSvg = await QRCode.toString('https://arronmccrory.com/', {
 
 		// Mouse events (for desktop dev tools / browser testing)
 		cardScene.addEventListener('mousedown', function (e) {
-			// Don't trigger if clicked on child interactive link
 			if (e.target.closest('a')) return;
 			onPointerStart(e.clientX, e.clientY);
 		});
